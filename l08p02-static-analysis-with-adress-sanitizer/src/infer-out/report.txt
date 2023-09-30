@@ -1,0 +1,44 @@
+#0
+de/tum/in/ase/eist/Main.java:44: error: Null Dereference
+  object `studentID` last assigned on line 43 could be null and is dereferenced at line 44.
+  42.       public static int validStudentID(Student student, int lowerBound) {
+  43.           Student.StudentID studentID = student.hasValidID(lowerBound);
+  44. >         return studentID.getMatriculationNo();
+  45.       }
+  46.   }
+
+#1
+de/tum/in/ase/eist/Student.java:46: error: Resource Leak
+  resource of type `java.io.FileOutputStream` acquired to `file` by call to `FileOutputStream(...)` at line 43 is not released after line 46.
+**Note**: potential exception at line 45
+  44.           try {
+  45.               file.write("The student should enter this seminar room.".getBytes());
+  46. >             return file;
+  47.           } finally {
+  48.   
+
+#2
+de/tum/in/ase/eist/SeminarRoom.java:38: warning: Thread Safety Violation
+  Read/Write race. Non-private method `SeminarRoom.leave()` reads without synchronization from `this.places.[_]`. Potentially races with write in method `SeminarRoom.enter(...)`.
+ Reporting because another access to the same memory occurs on a background thread, although this access may not.
+  36.           occupied.acquire();
+  37.           Student student;
+  38. >         student = places[out++];
+  39.           out %= places.length;
+  40.           occupancy--;
+
+#3
+de/tum/in/ase/eist/SeminarRoom.java:40: warning: Thread Safety Violation
+  Unprotected write. Non-private method `SeminarRoom.leave()` writes to field `this.occupancy` outside of synchronization.
+ Reporting because another access to the same memory occurs on a background thread, although this access may not.
+  38.           student = places[out++];
+  39.           out %= places.length;
+  40. >         occupancy--;
+  41.           free.release();
+  42.           return student;
+
+Found 4 issues
+                        Issue Type(ISSUED_TYPE_ID): #
+  Thread Safety Violation(THREAD_SAFETY_VIOLATION): 2
+                      Resource Leak(RESOURCE_LEAK): 1
+                Null Dereference(NULL_DEREFERENCE): 1
