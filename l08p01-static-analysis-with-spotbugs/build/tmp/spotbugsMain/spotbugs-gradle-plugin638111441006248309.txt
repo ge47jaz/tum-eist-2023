@@ -1,0 +1,4 @@
+C:\Users\chris\VSCodeProjects\EIST\eist23l11e03-practice-ge47jaz\build\classes\java\main\de\tum\in\ase\eist\Course.class
+C:\Users\chris\VSCodeProjects\EIST\eist23l11e03-practice-ge47jaz\build\classes\java\main\de\tum\in\ase\eist\Main.class
+C:\Users\chris\VSCodeProjects\EIST\eist23l11e03-practice-ge47jaz\build\classes\java\main\de\tum\in\ase\eist\Student.class
+C:\Users\chris\VSCodeProjects\EIST\eist23l11e03-practice-ge47jaz\build\classes\java\main\de\tum\in\ase\eist\TUMOnline.class
